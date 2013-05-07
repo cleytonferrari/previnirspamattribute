@@ -1,0 +1,30 @@
+﻿@model PrevinirSpam.Models.Comentario
+
+@{
+    ViewBag.Title = "Previne Spam";
+}
+
+<h2>Previne Sapm</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Comentário</legend>
+
+        @Html.ValidationSummary()
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Mensagem)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Mensagem)
+            @Html.ValidationMessageFor(model => model.Mensagem)
+        </div>
+
+        <p>
+            <input type="submit" value="Enviar" />
+        </p>
+    </fieldset>
+}
